@@ -1,0 +1,84 @@
+:root {
+    --menu-background-color: #c589f7;
+    --menu-hover-background-color: #63308d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background: var(--menu-background-color);
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    margin: 10px 5px;
+    border-radius: 5px;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+}
+
+.menu ul li {
+    position: relative;
+}
+
+.menu ul li a {
+    display: block;
+    border-radius: 3px;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.menu ul li a:hover {
+    background: var(--menu-hover-background-color);
+}
+
+.menu ul li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--menu-background-color);
+    list-style: none;
+}
+
+.menu ul li:hover ul {
+    display: block;
+}
+
+.menu ul li ul li a {
+    padding: 10px 20px;
+    white-space: nowrap;
+}
+
+.container {
+    margin: 0 10px;
+}
+
+#currentDateTime {
+    position: absolute;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: var(--menu-hover-background-color);
+    border-radius: 3px;
+    right: 20px;
+}
