@@ -31,11 +31,11 @@ document.addEventListener("DOMContentLoaded", function() {
         if (event.key === "ArrowLeft") {
             // Перейти к предыдущему изображению
             currentIndex = (currentIndex - 1 + fotos.length) % fotos.length;
-            displayModal("images/" + fotos[currentIndex]);
+            displayModal("/media/" + fotos[currentIndex]);
         } else if (event.key === "ArrowRight") {
             // Перейти к следующему изображению
             currentIndex = (currentIndex + 1) % fotos.length;
-            displayModal("images/" + fotos[currentIndex]);
+            displayModal("/media/" + fotos[currentIndex]);
         }
     }
 
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var listItem = document.createElement("li");
         var figure = document.createElement("figure");
         var image = document.createElement("img");
-        image.setAttribute("src", "images/" + fotos[i]);
+        image.setAttribute("src", "/media/" + fotos[i]);
         image.setAttribute("alt", "silly cat" + (i + 1));
 
         listItem.appendChild(figure);

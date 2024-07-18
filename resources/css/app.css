@@ -37,6 +37,7 @@ header {
 
 .menu ul li {
     position: relative;
+    margin: 0 2px;
 }
 
 .menu ul li a {

@@ -1,80 +1,69 @@
-$(document).ready(function() {
-    // Функция для проверки корректности заполнения поля E-mail
+document.addEventListener("DOMContentLoaded", function() {
     function validateEmail(email) {
         var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(String(email).toLowerCase());
     }
 
-    // Функция для проверки корректности заполнения поля Номер телефона
+
     function validatePhone(phone) {
-        var re = /^\+?\d{11}$/;
-        return re.test(String(phone));
+    var re = /^\+?\d{11}$/;
+    return re.test(String(phone));
     }
 
-    // Функция для обработки потери фокуса полем E-mail
-    $("#email").on("blur", function() {
-        var email = $(this).val();
+    var emailInput = document.getElementById("email");
+    var phoneInput = document.getElementById("phone");
+    var submitBtn = document.getElementById("submitBtn");
+
+    emailInput.addEventListener("blur", function() {
+        var email = emailInput.value;
         if (validateEmail(email)) {
-            $(this).css("background-color", "#c8f7c5");
-            $(this).next(".error").remove();
+            emailInput.style.backgroundColor = "#c8f7c5";
+            var errorSpan = emailInput.nextElementSibling;
+            if (errorSpan && errorSpan.classList.contains("error")) {
+                errorSpan.remove();
+            }
         } else {
-            $(this).css("background-color", "#f7c5c5");
-            if (!$(this).next(".error").length) {
-                $(this).after("<span class='error'>Пожалуйста, введите корректный адрес электронной почты</span>");
+            emailInput.style.backgroundColor = "#f7c5c5";
+            if (!emailInput.nextElementSibling || !emailInput.nextElementSibling.classList.contains("error")) {
+                var errorSpan = document.createElement("span");
+                errorSpan.classList.add("error");
+                errorSpan.textContent = "Пожалуйста, введите корректный адрес электронной почты";
+                emailInput.insertAdjacentElement("afterend", errorSpan);
             }
         }
         checkForm();
     });
 
-    // Функция для обработки потери фокуса полем Номер телефона
-    $("#phone").on("blur", function() {
-        var phone = $(this).val();
+    phoneInput.addEventListener("blur", function() {
+        var phone = phoneInput.value;
         if (validatePhone(phone)) {
-            $(this).css("background-color", "#c8f7c5");
-            $(this).next(".error").remove();
+            phoneInput.style.backgroundColor = "#c8f7c5";
+            var errorSpan = phoneInput.nextElementSibling;
+            if (errorSpan && errorSpan.classList.contains("error")) {
+                errorSpan.remove();
+            }
         } else {
-            $(this).css("background-color", "#f7c5c5");
-            if (!$(this).next(".error").length) {
-                $(this).after("<span class='error'>Пожалуйста, введите корректный номер телефона (10 цифр)</span>");
+            phoneInput.style.backgroundColor = "#f7c5c5";
+            if (!phoneInput.nextElementSibling || !phoneInput.nextElementSibling.classList.contains("error")) {
+                var errorSpan = document.createElement("span");
+                errorSpan.classList.add("error");
+                errorSpan.textContent = "Пожалуйста, введите корректный номер телефона (10 цифр)";
+                phoneInput.insertAdjacentElement("afterend", errorSpan);
             }
         }
         checkForm();
     });
 
-    // Функция для проверки активации кнопки отправки
     function checkForm() {
-        var isValidEmail = validateEmail($("#email").val());
-        var isValidPhone = validatePhone($("#phone").val());
+    var isValidEmail = validateEmail(emailInput.value);
+    var isValidPhone = validatePhone(phoneInput.value);
+    var emailError = emailInput.nextElementSibling;
+    var phoneError = phoneInput.nextElementSibling;
 
-        if (isValidEmail && isValidPhone && !$(".error").length) {
-            $("#submitBtn").prop("disabled", false);
-        } else {
-            $("#submitBtn").prop("disabled", true);
-        }
+    if (isValidEmail && isValidPhone && !emailError && !phoneError) {
+        submitBtn.disabled = false;
+    } else {
+        submitBtn.disabled = true;
     }
-
-    $("#submitBtn").hover(function() {
-        if ($(this).prop("disabled")) {
-            $(this).popover({
-                content: "Пожалуйста, заполните форму корректно.",
-                placement: "bottom"
-            });
-            $(this).popover("show");
-            setTimeout(function() {
-                $("#submitBtn").popover("destroy");
-            }, 3000);
-        }
-    });
-
-    // Показ модального окна подтверждения отправки формы
-    $("#contactForm").submit(function(event) {
-        event.preventDefault(); // Предотвращаем отправку формы по умолчанию
-        $('#confirmModal').modal('show'); // Показываем модальное окно подтверждения
-    });
-
-    // Отправка формы после подтверждения
-    $("#confirmSubmit").click(function() {
-        $("#contactForm").off("submit"); // Удаляем обработчик submit, чтобы избежать циклического вызова
-        $("#contactForm").submit(); // Отправляем форму
-    });
+    }
 });

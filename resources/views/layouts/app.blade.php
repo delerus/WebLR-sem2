@@ -11,7 +11,7 @@
     <header>
         @include('partials.menu')
     </header>
-    
+
     <div class="container">
         @yield('content')
     </div>

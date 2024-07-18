@@ -15,7 +15,7 @@
         <div class="InterestsList">
             <h1>Мои интересы</h1>
             <ul>
-                
+
             </ul>
         </div>
         <div class="Interest" id="Games">
@@ -23,7 +23,7 @@
                 Игры
             </h1>
             <p>
-                В свободное время я в основном играю в видеоигры. 
+                В свободное время я в основном играю в видеоигры.
                 Мои <strong>ЛЮБИМЫЕ</strong> игры: Dota 2, Persona 5, Yakuza 0, Divinity: Original Sin 2.
             </p>
             <picture>
