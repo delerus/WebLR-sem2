@@ -7,7 +7,7 @@
 @endsection
 
 @section('extra-js')
-    @vite('resources\js\scripts\test.js')
+
 @endsection
 
 @section('content')
@@ -16,7 +16,8 @@
             <div class="container">
                 <h1 class="title" style="margin-bottom: 10px;">Тест по предмету "Основы электротехники и электроники"</h1>
 
-                <form method="post" action="mailto: evgkosyak@gmail.com" class="contact__form form" id="test_form">
+                <form method="post" action="{{ route('test.submit') }}" class="contact__form form" id="test_form">
+                    @csrf
                     <div class="form__group">
                         <div class="form__group-title">Вопрос 1: Какой тип элемента с тремя выводами?</div>
 
