@@ -5,6 +5,7 @@ use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\InterestsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\GuestbookController;
 
 Route::get('/', function () {
     return view('index');
@@ -28,4 +29,6 @@ Route::post('/contacts', [ContactController::class, 'handleForm'])->name('contac
 Route::get('/test', [TestController::class, 'showForm'])->name('test.form');
 Route::post('/test', [TestController::class, 'handleForm'])->name('test.submit');
 
+Route::get('/guestbook', [GuestbookController::class, 'showForm'])->name('guestbook.show');
+Route::post('/guestbook', [GuestbookController::class, 'submitForm'])->name('guestbook.submit');
 

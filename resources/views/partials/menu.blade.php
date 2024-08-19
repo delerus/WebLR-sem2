@@ -15,6 +15,7 @@
         <li><a href="{{ url('/album') }}">Фотоальбом</a></li>
         <li><a href="{{ url('/contacts') }}">Контакт</a></li>
         <li><a href="{{ url('/test') }}">Тест</a></li>
+        <li><a href="{{ url('/guestbook') }}">Гостевая книга</a></li>
     </ul>
     <div id="currentDateTime"></div>
 </div>
