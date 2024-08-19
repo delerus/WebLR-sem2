@@ -11,6 +11,8 @@
         <section>
             <h1>Гостевая книга</h1>
 
+            <a href="{{ url('/guestbook_admin') }}" class="admin">Админка</a>
+
             <!-- Форма для отправки сообщения -->
             <form method="post" action="{{ route('guestbook.submit') }}">
                 @csrf
@@ -43,10 +45,10 @@
                 <tbody>
                     @foreach ($messages as $message)
                         <tr>
-                            <td>{{ $message->created_at }}</td>
-                            <td>{{ $message->name }}</td>
-                            <td>{{ $message->email }}</td>
-                            <td>{{ $message->message }}</td>
+                            <td>{{ $message['created_at'] }}</td>
+                            <td>{{ $message['name']}}</td>
+                            <td>{{ $message['email'] }}</td>
+                            <td>{{ $message['message'] }}</td>
                         </tr>
                     @endforeach
                 </tbody>

@@ -1,25 +1,9 @@
-/* Цвета из вашей палитры */
-:root {
-    --menu-background-color: #c589f7;
-    --menu-hover-background-color: #63308d;
-    --form-background-color: #ffffff;
-    --table-background-color: #ffffff;
-    --border-color: #ddd;
-}
-
-/* Общие стили страницы */
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
-}
-
 /* Основной контейнер для центрирования содержимого */
 main {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center; /* Центрирование содержимого по вертикали */
+    flex-direction: column; /* Размещение элементов по вертикали */
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -27,14 +11,12 @@ main {
 
 /* Стили формы */
 form {
-    background-color: var(--form-background-color);
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-right: 20px;
-    flex: 1;
-    width: 400px;
-    justify-content: center;
+    border-radius: 10px;
+    width: 400px; /* Ограничение ширины формы */
+    margin: 20px auto; /* Центрирование формы */
+    text-align: center;
+    border: 2px solid #c589f7;
 }
 
 form div {
@@ -45,6 +27,7 @@ form label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
+    text-align: left;
 }
 
 form input[type="text"],
@@ -52,7 +35,7 @@ form input[type="email"],
 form textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid var(--border-color);
+    border: 1px;
     border-radius: 4px;
 }
 
@@ -78,6 +61,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     flex: 2;
+    margin-top: 20px;
 }
 
 table thead {
@@ -95,6 +79,17 @@ table th {
     text-align: left;
 }
 
-table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+.admin {
+    margin: 0;
+    border-radius: 3px;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: background 0.3s;
+    color:#fff;
+    position: absolute;
+    padding: 5px 57px;
+}
+
+.admin:hover {
+    background: var(--menu-hover-background-color);
 }
