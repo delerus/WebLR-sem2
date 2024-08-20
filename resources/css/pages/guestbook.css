@@ -14,7 +14,7 @@ form {
     padding: 20px;
     border-radius: 10px;
     width: 400px; /* Ограничение ширины формы */
-    margin: 20px auto; /* Центрирование формы */
+    margin: 40px auto; /* Центрирование формы */
     text-align: center;
     border: 2px solid #c589f7;
 }

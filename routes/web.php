@@ -6,6 +6,7 @@ use App\Http\Controllers\InterestsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\GuestbookController;
+use App\Http\Controllers\GuestbookUploadController;
 
 Route::get('/', function () {
     return view('index');
@@ -31,4 +32,7 @@ Route::post('/test', [TestController::class, 'handleForm'])->name('test.submit')
 
 Route::get('/guestbook', [GuestbookController::class, 'showForm'])->name('guestbook.show');
 Route::post('/guestbook', [GuestbookController::class, 'submitForm'])->name('guestbook.submit');
+
+Route::get('/guestbook_admin', [GuestbookUploadController::class, 'showForm'])->name('guestbook.upload.form');
+Route::post('/guestbook_admin', [GuestbookUploadController::class, 'uploadFile'])->name('guestbook.upload.file');
 
