@@ -1,3 +1,29 @@
 main {
     text-align: left;
 }
+
+table {
+    background-color: var(--table-background-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    border-collapse: collapse;
+    flex: 2;
+    margin-top: 20px;
+}
+
+table thead {
+    background-color: var(--menu-background-color);
+    color: #fff;
+}
+
+table th,
+table td {
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+table th {
+    text-align: left;
+}
