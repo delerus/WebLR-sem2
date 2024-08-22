@@ -4,22 +4,33 @@ namespace App\Http\Controllers;
 
 use App\Models\BlogPost;
 use Illuminate\Http\Request;
+use App\Validators\FormValidation;
 
 class BlogController extends Controller
 {
     public function store(Request $request)
     {
-        // Валидация данных прямо в контроллере
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
-        ]);
+        // Инициализация валидатора
+        $validator = new FormValidation();
+
+        // Добавляем правила валидации
+        $validator->setRule('title', 'isNotEmpty');
+        $validator->setRule('content', 'isNotEmpty');
+
+        // Выполняем валидацию
+        $validator->validate($request->all());
+
+        // Проверка наличия ошибок
+        if ($errors = $validator->errors()) {
+            return redirect()->back()->withErrors($errors)->withInput();
+        }
 
         // Создаём новую запись блога
         $blogPost = new BlogPost();
-        $blogPost->title = $validatedData['title'];
-        $blogPost->content = $validatedData['content'];
+        $blogPost->title = $request->input('title');
+        $blogPost->content = $request->input('content');
 
+        // Установка дат создания и обновления
         $blogPost->created_at = now();
         $blogPost->updated_at = now();
 
@@ -37,6 +48,7 @@ class BlogController extends Controller
 
         return redirect()->route('blog.index')->with('success', 'Запись блога успешно добавлена!');
     }
+
 
     public function index()
     {

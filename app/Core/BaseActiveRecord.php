@@ -94,4 +94,5 @@ class BaseActiveRecord
     {
         $this->attributes[$name] = $value;
     }
+
 }

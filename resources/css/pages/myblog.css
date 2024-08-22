@@ -1,0 +1,73 @@
+h1 {
+    text-align: center;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 10px;
+}
+
+.post {
+    background-color: #fff; /* Традиционный цвет поста */
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.post img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 600px;
+    border-radius: 10px;
+}
+
+.post h2 {
+    color: #63308d; /* Традиционный цвет заголовка */
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.post p {
+    color: #b3b3b3; /* Традиционный цвет текста поста */
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.post .date {
+    color: #888888; /* Традиционный цвет даты */
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.post hr {
+    display: none; /* Убираем полоски */
+}
+
+.post:hover {
+    transform: scale(1.01); /* Slight scale-up on hover */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+  }
+
+.admin {
+    margin: 0;
+    border-radius: 3px;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: background 0.3s;
+    color:#fff;
+    position: absolute;
+    padding: 5px 57px;
+    left: 56%;
+    bottom: 82%;
+}
+
+.admin:hover {
+    background: var(--menu-hover-background-color);
+}
+
