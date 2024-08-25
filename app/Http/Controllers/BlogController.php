@@ -46,7 +46,7 @@ class BlogController extends Controller
         // Сохранение записи в базу данных
         $blogPost->save();
 
-        return redirect()->route('blog.index')->with('success', 'Запись блога успешно добавлена!');
+        return redirect()->route('admin_blog.index')->with('success', 'Запись блога успешно добавлена!');
     }
 
 

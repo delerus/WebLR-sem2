@@ -19,7 +19,7 @@
     @endif
 
     <!-- Форма для добавления записи блога -->
-    <form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin_blog.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div>
             <label for="title">Тема сообщения:</label>
