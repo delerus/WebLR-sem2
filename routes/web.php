@@ -36,13 +36,13 @@ Route::post('/test', [TestController::class, 'handleForm'])->name('test.submit')
 Route::get('/guestbook', [GuestbookController::class, 'showForm'])->name('guestbook.show');
 Route::post('/guestbook', [GuestbookController::class, 'submitForm'])->name('guestbook.submit');
 
-Route::get('/guestbook_admin', [GuestbookUploadController::class, 'showForm'])->name('guestbook.upload.form');
-Route::post('/guestbook_admin', [GuestbookUploadController::class, 'uploadFile'])->name('guestbook.upload.file');
+Route::get('/admin', [GuestbookUploadController::class, 'showForm'])->name('guestbook.upload.form');
+Route::post('/admin/guestbook/upload', [GuestbookUploadController::class, 'uploadFile'])->name('guestbook.upload.file');
 
-Route::get('/blog_admin', [BlogController::class, 'index'])->name('admin_blog.index');
-Route::post('/blog_admin', [BlogController::class, 'store'])->name('admin_blog.store');;
+Route::get('/admin', [BlogController::class, 'index'])->name('admin_blog.index');
+Route::post('/admin/blog/store', [BlogController::class, 'store'])->name('admin_blog.store');;
 
 Route::get('/blog', [MyBlogController::class, 'index'])->name('blog.index');
 
-Route::get('/upload_blog', [CSVUploadController::class, 'showUploadForm'])->name('upload-blog.form');
-Route::post('/upload_blog', [CSVUploadController::class, 'handleUpload'])->name('upload-blog.handle');
+Route::get('/admin', [CSVUploadController::class, 'showUploadForm'])->name('upload-blog.form');
+Route::post('/admin/blog/upload', [CSVUploadController::class, 'handleUpload'])->name('upload-blog.handle');

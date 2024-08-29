@@ -10,7 +10,7 @@ class GuestbookUploadController extends Controller
     // Метод для отображения формы загрузки
     public function showForm()
     {
-        return view('guestbook_admin');
+        return view('admin_dashboard');
     }
 
     // Метод для обработки загрузки файла

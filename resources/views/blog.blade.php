@@ -8,7 +8,6 @@
 
 @section('content')
     <h1>Мой блог =)</h1>
-    <a href="{{ url('/blog_admin') }}" class="admin">Админка</a>
 
     @foreach ($posts as $post)
         <div class="post">

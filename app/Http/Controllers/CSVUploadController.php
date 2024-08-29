@@ -10,7 +10,7 @@ class CSVUploadController extends Controller
 {
     public function showUploadForm()
     {
-        return view('upload_blog');
+        return view('admin_dashboard');
     }
 
     public function handleUpload(Request $request)

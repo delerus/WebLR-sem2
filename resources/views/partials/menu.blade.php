@@ -17,6 +17,7 @@
         <li><a href="{{ url('/test') }}">Тест</a></li>
         <li><a href="{{ url('/guestbook') }}">Гостевая книга</a></li>
         <li><a href="{{ url('/blog') }}">Блог</a></li>
+        <li><a href="{{ url('/admin') }}">Админка</a></li>
     </ul>
     <div id="currentDateTime"></div>
 </div>

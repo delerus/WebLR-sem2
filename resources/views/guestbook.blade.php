@@ -11,8 +11,6 @@
         <section>
             <h1>Гостевая книга</h1>
 
-            <a href="{{ url('/guestbook_admin') }}" class="admin">Админка</a>
-
             <!-- Форма для отправки сообщения -->
             <form method="post" action="{{ route('guestbook.submit') }}">
                 @csrf

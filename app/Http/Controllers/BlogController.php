@@ -46,12 +46,12 @@ class BlogController extends Controller
         // Сохранение записи в базу данных
         $blogPost->save();
 
-        return redirect()->route('admin_blog.index')->with('success', 'Запись блога успешно добавлена!');
+        return redirect()->back();
     }
 
 
     public function index()
     {
-        return view('blog_admin');
+        return view('admin_dashboard');
     }
 }
