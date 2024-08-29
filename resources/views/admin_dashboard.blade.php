@@ -55,5 +55,34 @@
     <button type="submit">Загрузить файл</button>
 </form>
 
+<h1>Докс сват</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Дата и время</th>
+                <th>Посещённая страница</th>
+                <th>IP-адрес</th>
+                <th>Имя хоста</th>
+                <th>Браузер</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($visits as $visit)
+                <tr>
+                    <td>{{ $visit->visited_at }}</td>
+                    <td>{{ $visit->page_visited }}</td>
+                    <td>{{ $visit->ip_address }}</td>
+                    <td>{{ $visit->host_name }}</td>
+                    <td>{{ $visit->browser_name }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        {{ $visits->links() }}
+    </div>
+
 @endsection
 

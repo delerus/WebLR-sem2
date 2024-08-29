@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IndexPageController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\InterestsController;
 use App\Http\Controllers\ContactController;
@@ -10,10 +12,9 @@ use App\Http\Controllers\GuestbookUploadController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\MyBlogController;
 use App\Http\Controllers\CSVUploadController;
+use App\Http\Controllers\VisitorsLogController;
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [IndexPageController::class, 'index']);
 
 Route::get('/about', function () {
     return view('about');
@@ -46,3 +47,7 @@ Route::get('/blog', [MyBlogController::class, 'index'])->name('blog.index');
 
 Route::get('/admin', [CSVUploadController::class, 'showUploadForm'])->name('upload-blog.form');
 Route::post('/admin/blog/upload', [CSVUploadController::class, 'handleUpload'])->name('upload-blog.handle');
+
+Route::get('/admin', [VisitorsLogController::class, 'showVisits'])->name('admin_dashboard');
+Route::get('/admin/visitors-log', [VisitorsLogController::class, 'index'])->name('admin.visitors-log');
+

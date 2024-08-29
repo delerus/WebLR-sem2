@@ -9,8 +9,9 @@ use App\Models\Message;
 class GuestbookController extends Controller
 {
     // Отображение страницы гостевой книги
-    public function showForm()
+    public function showForm(Request $request)
     {
+        VisitorsLogController::logVisit($request);
         $messages = $this->getMessagesFromFile();
         return view('guestbook', ['messages' => $messages]);
     }
