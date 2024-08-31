@@ -18,12 +18,4 @@ class VisitorsLogController extends Controller
             'browser_name' => $request->header('User-Agent'),
         ]);
     }
-
-    // Метод для отображения информации о визитах с пагинацией
-    public function showVisits(Request $request)
-    {
-        $visits = VisitorsLog::orderBy('visited_at', 'desc')->paginate(10);
-
-        return view('admin_dashboard', compact('visits'));
-    }
 }

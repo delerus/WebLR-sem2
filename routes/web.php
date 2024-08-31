@@ -13,6 +13,8 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\MyBlogController;
 use App\Http\Controllers\CSVUploadController;
 use App\Http\Controllers\VisitorsLogController;
+use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', [IndexPageController::class, 'index']);
 
@@ -37,17 +39,20 @@ Route::post('/test', [TestController::class, 'handleForm'])->name('test.submit')
 Route::get('/guestbook', [GuestbookController::class, 'showForm'])->name('guestbook.show');
 Route::post('/guestbook', [GuestbookController::class, 'submitForm'])->name('guestbook.submit');
 
-Route::get('/admin', [GuestbookUploadController::class, 'showForm'])->name('guestbook.upload.form');
-Route::post('/admin/guestbook/upload', [GuestbookUploadController::class, 'uploadFile'])->name('guestbook.upload.file');
+Route::post('/admin/guestbook/upload', [AdminController::class, 'uploadGuestbookFile'])->name('guestbook.upload');
 
-Route::get('/admin', [BlogController::class, 'index'])->name('admin_blog.index');
-Route::post('/admin/blog/store', [BlogController::class, 'store'])->name('admin_blog.store');;
+Route::post('/admin/blog/store', [AdminController::class, 'storeBlogPost'])->name('blog.store');
 
 Route::get('/blog', [MyBlogController::class, 'index'])->name('blog.index');
 
-Route::get('/admin', [CSVUploadController::class, 'showUploadForm'])->name('upload-blog.form');
-Route::post('/admin/blog/upload', [CSVUploadController::class, 'handleUpload'])->name('upload-blog.handle');
+Route::post('/admin/csv/upload', [AdminController::class, 'handleCSVUpload'])->name('csv.upload');
 
 Route::get('/admin', [VisitorsLogController::class, 'showVisits'])->name('admin_dashboard');
 Route::get('/admin/visitors-log', [VisitorsLogController::class, 'index'])->name('admin.visitors-log');
 
+Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
+Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login');
+
+Route::get('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+
+Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin');

@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
+@section('title', 'Админ-панель')
+
 @section('content')
    <!-- Форма для добавления записи в блог -->
    <h1>Добавить запись в блог</h1>
-<form action="{{ route('admin_blog.store') }}" method="POST">
+<form action="{{ route('blog.store') }}" method="POST">
     @csrf
     <div>
         <label for="title">Тема сообщения:</label>
@@ -24,7 +26,7 @@
 
 <!-- Форма для загрузки CSV -->
 <h1>Загрузить записи в блог</h1>
-<form action="{{ route('upload-blog.handle') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('csv.upload') }}" method="POST" enctype="multipart/form-data">
     @csrf
     @if ($errors->any())
         <div>
@@ -36,7 +38,7 @@
         </div>
     @endif
 
-    <form action="{{ route('upload-blog.handle') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('csv.upload') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div>
             <label for="csv_file">Выберите CSV файл:</label>
@@ -48,13 +50,14 @@
 
 <!-- Форма для загрузки файла в гостевую книгу -->
 <h1>Загрузить записи в гостевую книгу</h1>
-<form action="{{ route('guestbook.upload.file') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('guestbook.upload') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <label for="guestbook_file" style="text-align: center">Выберите файл messages.inc:</label>
     <input type="file" name="guestbook_file" id="guestbook_file" required style="margin: 10px">
     <button type="submit">Загрузить файл</button>
 </form>
 
+<!-- Информация о посещениях -->
 <h1>Докс сват</h1>
 
     <table>
