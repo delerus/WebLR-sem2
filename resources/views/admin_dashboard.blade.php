@@ -5,7 +5,7 @@
 @section('content')
    <!-- Форма для добавления записи в блог -->
    <h1>Добавить запись в блог</h1>
-<form action="{{ route('blog.store') }}" method="POST">
+<form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div>
         <label for="title">Тема сообщения:</label>
