@@ -6,6 +6,7 @@ use App\Models\BlogPost;
 use App\Validators\FormValidation;
 use Illuminate\Http\Request;
 use App\Models\VisitorsLog;
+use Illuminate\Support\Facades\Log;
 
 class AdminController extends Controller
 {
@@ -20,7 +21,7 @@ class AdminController extends Controller
         return view('admin_dashboard', compact('visits'));
     }
 
-    public function store(Request $request)
+    public function storeBlogPost(Request $request)
     {
         // Инициализация валидатора
         $validator = new FormValidation();
@@ -46,6 +47,7 @@ class AdminController extends Controller
         $blogPost->created_at = now();
         $blogPost->updated_at = now();
 
+        Log::debug($request);
         // Проверка наличия изображения и сохранение его пути
         if ($request->hasFile('image_path')) {
             $file = $request->file('image_path');
