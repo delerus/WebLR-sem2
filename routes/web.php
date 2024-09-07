@@ -15,6 +15,7 @@ use App\Http\Controllers\CSVUploadController;
 use App\Http\Controllers\VisitorsLogController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserRegController;
 
 Route::get('/', [IndexPageController::class, 'index']);
 
@@ -56,3 +57,6 @@ Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.
 Route::get('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
 Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin');
+
+Route::get('/registration', [UserRegController::class, 'index']);
+Route::post('/registrtion', [UserRegController::class, 'registrate'])->name('user.registration');
