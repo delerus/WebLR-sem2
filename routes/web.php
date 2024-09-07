@@ -16,6 +16,7 @@ use App\Http\Controllers\VisitorsLogController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserRegController;
+use App\Http\Controllers\UserLogController;
 
 Route::get('/', [IndexPageController::class, 'index']);
 
@@ -60,3 +61,8 @@ Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin');
 
 Route::get('/registration', [UserRegController::class, 'index']);
 Route::post('/registrtion', [UserRegController::class, 'registrate'])->name('user.registration');
+
+Route::get('/login', [UserLogController::class, 'index']);
+Route::post('/login', [UserLogController::class, 'login'])->name('user.login');
+
+Route::get('/logout', [UserLogController::class, 'logout']);
