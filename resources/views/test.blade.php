@@ -66,29 +66,34 @@
                 @endif
             </form>
 
-            <div class="test-results" style="margin-top: 40px;">
-                <h2>Результаты теста</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Имя</th>
-                            <th>Статус</th>
-                            <th>Ответ на открытый вопрос</th>
-                            <th>Дата</th> <!-- Добавляем колонку для даты -->
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($testResults as $result)
+            @if (session('isLogged'))
+                <div class="test-results" style="margin-top: 40px;">
+                    <h2>Результаты теста</h2>
+                    <table>
+                        <thead>
                             <tr>
-                                <td>{{ $result->name }}</td>
-                                <td>{{ $result->is_passed }}</td>
-                                <td>{{ $result->open_question_answer }}</td>
-                                <td>{{ $result->created_at }}</td> <!-- Выводим дату -->
+                                <th>Имя</th>
+                                <th>Статус</th>
+                                <th>Ответ на открытый вопрос</th>
+                                <th>Дата</th> <!-- Добавляем колонку для даты -->
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                            @foreach($testResults as $result)
+                                <tr>
+                                    <td>{{ $result->name }}</td>
+                                    <td>{{ $result->is_passed }}</td>
+                                    <td>{{ $result->open_question_answer }}</td>
+                                    <td>{{ $result->created_at }}</td> <!-- Выводим дату -->
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            @else
+                <p>Результаты теста доступны только авторизованным пользователям =)</p>
+            @endif
+
         </div>
     </section>
 </main>

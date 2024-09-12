@@ -12,19 +12,14 @@
         @include('partials.menu')
     </header>
 
-    
-        @php
-        if(@session('isLogged')) {
-            echo '<a href="{{ url(\'/logout\') }}">
-            session(\'name\');
-            </a>';
-        } else {
-            echo '<a href="{{ url(\'/login\') }}">';
-            echo 'Войти';
-            echo'</a>';
-        }
-        @endphp
-    
+
+    @if (session('isLogged'))
+    <a href="{{ url('/logout') }}">
+        {{ session('name') }}
+    </a>
+    @else
+    <a href="{{ url('/login') }}">Войти</a>
+    @endif
 
     <div class="container">
         @yield('content')
