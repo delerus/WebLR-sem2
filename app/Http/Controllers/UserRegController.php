@@ -25,7 +25,7 @@ class UserRegController extends Controller
         if ($errors = $validator->errors()) {
             return redirect()->back()->withErrors($errors)->withInput();
         }
-        
+
         $exists = User::where('login', $request->user_login)->exists();
         if($exists){
             return  redirect()->back()->withError('Такой пользователь ЕСТЬ')->withInput();
@@ -47,9 +47,16 @@ class UserRegController extends Controller
         session(['name' => trim($request->user_name)]);
         session(['isLogged' => 1]);
         return redirect("/");
-    }   
+    }
 
     public function index(Request $request){
         return view('user_registration');
     }
+
+    public function checkLogin(Request $request) {
+        $login = $request->input('login');
+        $isTaken = User::where('login', $login)->exists();
+        return response()->json(['available' => !$isTaken]);
+    }
 }
+

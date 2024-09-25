@@ -66,3 +66,6 @@ Route::get('/login', [UserLogController::class, 'index']);
 Route::post('/login', [UserLogController::class, 'login'])->name('user.login');
 
 Route::get('/logout', [UserLogController::class, 'logout']);
+
+Route::post('/check-login', [UserRegController::class, 'checkLogin'])->name('check.login');
+
