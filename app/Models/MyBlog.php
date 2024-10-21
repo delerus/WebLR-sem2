@@ -2,19 +2,26 @@
 
 namespace App\Models;
 
-use App\Core\BaseActiveRecord;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class MyBlog extends BaseActiveRecord
+class MyBlog extends Model
 {
-    protected $table = 'blog_posts'; // Название таблицы
+    use HasFactory;
 
-    // Опционально можно определить атрибуты, если это необходимо
-    protected $attributes = [
-        'id',
+    // Указываем название таблицы
+    protected $table = 'blog_posts';
+
+    // Указываем, какие атрибуты можно массово заполнять
+    protected $fillable = [
         'title',
         'content',
         'image_path',
-        'created_at',
-        'updated_at',
     ];
+
+    // Определяем отношение с комментариями
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'post_id');
+    }
 }

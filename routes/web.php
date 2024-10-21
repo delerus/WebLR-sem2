@@ -17,6 +17,7 @@ use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserRegController;
 use App\Http\Controllers\UserLogController;
+use App\Http\Controllers\CommentController;
 
 Route::get('/', [IndexPageController::class, 'index']);
 
@@ -69,3 +70,4 @@ Route::get('/logout', [UserLogController::class, 'logout']);
 
 Route::post('/check-login', [UserRegController::class, 'checkLogin'])->name('check.login');
 
+Route::post('/comments', [CommentController::class, 'addComment'])->name('comments.store');
